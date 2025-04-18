@@ -1,12 +1,105 @@
 {
-	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-	"organizeImports": {
-		"enabled": true
-	},
-	"linter": {
-		"enabled": true,
-		"rules": {
-			"recommended": true
-		}
-	}
+  "$schema": "https://biomejs.dev/schemas/2.0.0-beta.1/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "ignoreUnknown": true
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "lineWidth": 120,
+    "formatWithErrors": true,
+    "indentWidth": 2,
+    "includes": ["./apps/**", "./libs/**"]
+  },
+  "linter": {
+    "enabled": true,
+    "domains": {
+      "test": "recommended",
+      "react": "recommended"
+    },
+    "rules": {
+      "recommended": true,
+      "complexity": {
+        "recommended": true,
+        "useLiteralKeys": "warn",
+        "noUselessFragments": "warn",
+        "useRegexLiterals": "warn",
+        "noBannedTypes": "warn",
+        "noStaticOnlyClass": "warn",
+        "useFlatMap": "warn",
+        "noExcessiveNestedTestSuites": "off"
+      },
+      "correctness": {
+        "noUnreachable": "warn",
+        "recommended": true,
+        "useExhaustiveDependencies": "warn",
+        "noFlatMapIdentity": "warn",
+        "useJsxKeyInIterable": "warn",
+        "noVoidTypeReturn": "warn",
+        "noEmptyPattern": "warn",
+        "noUnusedVariables": "warn",
+        "noUnsafeOptionalChaining": "error"
+      },
+      "suspicious": {
+        "recommended": true,
+        "noExplicitAny": "warn",
+        "noArrayIndexKey": "warn",
+        "noShadowRestrictedNames": "warn",
+        "noGlobalIsNan": "warn",
+        "noFocusedTests": "warn",
+        "noImplicitAnyLet": "warn",
+        "noDuplicateTestHooks": "warn",
+        "noConfusingVoidType": "warn",
+        "noRedeclare": "warn",
+        "noExportsInTest": "warn",
+        "noConstEnum": "warn",
+        "noAssignInExpressions": "warn",
+        "noDoubleEquals": "warn",
+        "noGlobalIsFinite": "warn",
+        "useIsArray": "warn"
+      },
+      "security": {
+        "recommended": true,
+        "noDangerouslySetInnerHtml": "warn"
+      },
+      "a11y": {
+        "recommended": true,
+        "useSemanticElements": "warn",
+        "noSvgWithoutTitle": "warn",
+        "useButtonType": "warn",
+        "useValidAriaRole": "warn",
+        "noLabelWithoutControl": "warn",
+        "useAltText": "warn"
+      },
+      "performance": {
+        "recommended": true,
+        "noAccumulatingSpread": "warn"
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "jsxQuoteStyle": "double",
+      "trailingCommas": "es5"
+    }
+  },
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "groups": [":PACKAGE:", ":BLANK_LINE:", "./**", ":BLANK_LINE:", "../**"]
+          }
+        }
+      }
+    }
+  }
 }
